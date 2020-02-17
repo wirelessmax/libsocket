@@ -6,6 +6,7 @@ set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
 set(CMAKE_C_COMPILER $ENV{CC})
+message(${CMAKE_C_COMPILER})
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_FLAGS}")
 
@@ -38,14 +39,17 @@ ADD_DEFINITIONS(-Wall -Wextra)
 
 IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     SET(CMAKE_INSTALL_PREFIX "/usr")
+    message(${CMAKE_INSTALL_PREFIX})
 ENDIF()
+set(CMAKE_INSTALL_PREFIX "$ENV{INSTALL_DIR}/../usr")
+message(${CMAKE_INSTALL_PREFIX})
 
 # Install directories
 SET(HEADER_DIR "include/libsocket")
 SET(LIB_DIR "lib")
 
 ADD_SUBDIRECTORY(C/)
-ADD_SUBDIRECTORY(headers/)
+#ADD_SUBDIRECTORY(headers/)
 
 #IF( NOT IS_SUNOS )
 #   ADD_SUBDIRECTORY(C++/)
@@ -74,7 +78,7 @@ ENDIF(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
 
 set(INSTALL_LIB_DIR lib CACHE PATH "Installation directory for libraries")
 set(INSTALL_BIN_DIR bin CACHE PATH "Installation directory for executables")
-set(INSTALL_INCLUDE_DIR include CACHE PATH "Installation directory for header files")
+#set(INSTALL_INCLUDE_DIR include CACHE PATH "Installation directory for header files")
 set(DEF_INSTALL_CMAKE_DIR lib/CMake/libsocket)
 
 foreach(p LIB BIN INCLUDE CMAKE)
