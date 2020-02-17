@@ -5,8 +5,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
-set(tools /root/dvw60x_sdk_v0.03/toolchain-aarch64_cortex-a53_gcc-5.2.0_musl-1.1.16)
-set(CMAKE_C_COMPILER ${tools}/bin/aarch64-openwrt-linux-musl-gcc)
+set(CMAKE_C_COMPILER $ENV{CC})
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_FLAGS}")
 
